@@ -144,7 +144,6 @@ const SectionHero2: FC<SectionHero2Props> = ({ className = "" }) => {
                 {item.heading}
               </h2>
             </div>
-
             <ButtonPrimary
               className="nc-SectionHero2Item__button dark:bg-slate-900"
               sizeClass="py-3 px-6 sm:py-5 sm:px-9"

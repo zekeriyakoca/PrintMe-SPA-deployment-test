@@ -1,31 +1,42 @@
+"use client"
+
 import React, { FC } from "react";
-import facebookSvg from "@/images/Facebook.svg";
 import twitterSvg from "@/images/Twitter.svg";
 import googleSvg from "@/images/Google.svg";
 import Input from "@/shared/Input/Input";
 import ButtonPrimary from "@/shared/Button/ButtonPrimary";
 import Image from "next/image";
 import Link from "next/link";
+import { useMsal, useIsAuthenticated } from '@azure/msal-react';
+import { loginRequest, tokenRequest } from '../../authConfig';
 
-const loginSocials = [
-  {
-    name: "Continue with Facebook",
-    href: "#",
-    icon: facebookSvg,
-  },
-  {
-    name: "Continue with Twitter",
-    href: "#",
-    icon: twitterSvg,
-  },
-  {
-    name: "Continue with Google",
-    href: "#",
-    icon: googleSvg,
-  },
-];
 
 const PageLogin = () => {
+
+  const { instance, accounts } = useMsal();
+
+  const handleMicrosoftLogin = () => {
+    instance.loginPopup(loginRequest).catch((e) => {
+      console.error(e);
+    });
+    return true;
+  };
+
+  const loginSocials = [
+    {
+      name: "Continue with Microsoft",
+      href: "#",
+      icon: twitterSvg,
+      handleClick:handleMicrosoftLogin
+    },
+    {
+      name: "Continue with Google",
+      href: "#",
+      icon: googleSvg,
+      handleClick:()=>{}
+    },
+  ];
+
   return (
     <div className={`nc-PageLogin`} data-nc-id="PageLogin">
       <div className="container mb-24 lg:mb-32">
@@ -34,8 +45,9 @@ const PageLogin = () => {
         </h2>
         <div className="max-w-md mx-auto space-y-6">
           <div className="grid gap-3">
-            {loginSocials.map((item, index) => (
+            {loginSocials?.map((item, index) => (
               <a
+              onClick={item.handleClick}
                 key={index}
                 href={item.href}
                 className="flex w-full rounded-lg bg-primary-50 dark:bg-neutral-800 px-4 py-3 transform transition-transform sm:px-6 hover:translate-y-[-2px]"
