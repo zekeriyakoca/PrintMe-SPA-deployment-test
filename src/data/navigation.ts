@@ -245,17 +245,17 @@ export const NAVIGATION_DEMO_2: NavItemType[] = [
   },
   {
     id: ncNanoId(),
-    href: "/best-sellers",
+    href: "/#",
     name: "Bestsellers",
   },
   {
     id: ncNanoId(),
-    href: "/your-design",
+    href: "/#",
     name: "Your Design",
   },
   {
     id: ncNanoId(),
-    href: "/we-design",
+    href: "/#",
     name: "We Design",
   },
   {
