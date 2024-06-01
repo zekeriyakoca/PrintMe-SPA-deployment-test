@@ -13,13 +13,44 @@ import { loginRequest, tokenRequest } from '../../authConfig';
 
 const PageLogin = () => {
 
-  const { instance, accounts } = useMsal();
+  const { instance, accounts } = useMsal(); 
+   const isAuthenticated = useIsAuthenticated();
+
 
   const handleMicrosoftLogin = () => {
     instance.loginPopup(loginRequest).catch((e) => {
       console.error(e);
     });
     return true;
+  };
+
+  const test = () => {
+    callApiWithToken();
+  };
+
+
+  const callApiWithToken = async () => {
+    debugger;
+    if (isAuthenticated) {
+      const request = {
+        ...tokenRequest,
+        account: accounts[0],
+      };
+      try {
+        const response = await instance.acquireTokenSilent(request);
+        debugger;
+        const token = response.accessToken;
+        const apiResponse = await fetch('https://localhost:7183/test', {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        debugger;
+        console.log(apiResponse);
+      } catch (e) {
+        console.error(e);
+      }
+    }
   };
 
   const loginSocials = [
@@ -33,7 +64,7 @@ const PageLogin = () => {
       name: "Continue with Google",
       href: "#",
       icon: googleSvg,
-      handleClick:()=>{}
+      handleClick:()=>{test()}
     },
   ];
 

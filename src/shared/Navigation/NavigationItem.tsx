@@ -79,9 +79,7 @@ const NavigationItem: FC<NavigationItemProps> = ({ menuItem }) => {
       <li key={item.id} className={`${item.isNew ? "menuIsNew" : ""}`}>
         <Link
           className="font-normal text-slate-600 hover:text-black dark:text-slate-400 dark:hover:text-white "
-          href={{
-            pathname: item.href || undefined,
-          }}
+          href={ item.href || undefined}
         >
           {item.name}
         </Link>

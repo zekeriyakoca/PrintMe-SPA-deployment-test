@@ -546,9 +546,9 @@ const ProductDetailPage2 = ({}) => {
 
       {/* OTHER SECTION */}
       <div className="container pb-24 lg:pb-28 pt-14 space-y-14">
-        <hr className="border-slate-200 dark:border-slate-700" />
+        {/* <hr className="border-slate-200 dark:border-slate-700" /> */}
 
-        {renderReviews()}
+        {/* {renderReviews()} */}
 
         <hr className="border-slate-200 dark:border-slate-700" />
 

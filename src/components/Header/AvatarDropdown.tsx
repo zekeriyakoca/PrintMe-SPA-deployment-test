@@ -14,12 +14,6 @@ export default function AvatarDropdown() {
   const { instance, accounts } = useMsal();
   const isAuthenticated = useIsAuthenticated();
 
-  const handleLogin = () => {
-    instance.loginPopup(loginRequest).catch((e) => {
-      console.error(e);
-    });
-    return true;
-  };
   const handleLogout = () => {
     instance.logout().catch((e) => {
       console.error(e);

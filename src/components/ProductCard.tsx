@@ -264,10 +264,10 @@ const ProductCard: FC<ProductCardProps> = ({
       <div
         className={`nc-ProductCard relative flex flex-col bg-transparent ${className}`}
       >
-        <Link href={"/product-detail"} className="absolute inset-0"></Link>
+        <Link href={"/product-detail-2"} className="absolute inset-0"></Link>
 
         <div className="relative flex-shrink-0 bg-slate-50 dark:bg-slate-300 rounded-3xl overflow-hidden z-1 group">
-          <Link href={"/product-detail"} className="block">
+          <Link href={"/product-detail-2"} className="block">
             <NcImage
               containerClassName="flex aspect-w-11 aspect-h-12 w-full h-0"
               src={image}
@@ -279,11 +279,12 @@ const ProductCard: FC<ProductCardProps> = ({
           </Link>
           <ProductStatus status={status} />
           <LikeButton liked={isLiked} className="absolute top-3 end-3 z-10" />
-          {sizes ? renderSizeList() : renderGroupButtons()}
+          {renderGroupButtons()}
+          {/* {sizes ? renderSizeList() : renderGroupButtons()} */}
         </div>
 
         <div className="space-y-4 px-2.5 pt-5 pb-2.5">
-          {renderVariants()}
+          {/* {renderVariants()} */}
           <div>
             <h2 className="nc-ProductCard__title text-base font-semibold transition-colors">
               {name}
